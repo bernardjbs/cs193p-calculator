@@ -12,6 +12,7 @@
 		A1925D831F5E23BE00DB2A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1925D811F5E23BE00DB2A2C /* Main.storyboard */; };
 		A1925D851F5E23BE00DB2A2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1925D841F5E23BE00DB2A2C /* Assets.xcassets */; };
 		A1925D881F5E23BE00DB2A2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1925D861F5E23BE00DB2A2C /* LaunchScreen.storyboard */; };
+		A195E97A1F5F68F40047DA8E /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A195E9791F5F68F40047DA8E /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A1925D841F5E23BE00DB2A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1925D871F5E23BE00DB2A2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1925D891F5E23BE00DB2A2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A195E9791F5F68F40047DA8E /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				A1925D7F1F5E23BE00DB2A2C /* ViewController.swift */,
 				A1925D811F5E23BE00DB2A2C /* Main.storyboard */,
 				A1925D8F1F5E23D900DB2A2C /* Supporting Files */,
+				A195E9791F5F68F40047DA8E /* CalculatorBrain.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A195E97A1F5F68F40047DA8E /* CalculatorBrain.swift in Sources */,
 				A1925D801F5E23BE00DB2A2C /* ViewController.swift in Sources */,
 				A1925D7E1F5E23BE00DB2A2C /* AppDelegate.swift in Sources */,
 			);
@@ -309,6 +313,7 @@
 				A1925D8E1F5E23BE00DB2A2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
