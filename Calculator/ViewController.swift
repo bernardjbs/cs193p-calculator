@@ -8,6 +8,11 @@
 
 import UIKit
 
+//
+// TODO:
+// * Fix dot button
+// * Restrict number of digits to ensure they all fit in the label
+//
 class ViewController: UIViewController {
 
     // INSTANCE VARIABLE
@@ -33,7 +38,6 @@ class ViewController: UIViewController {
         get {
             return Double(display.text!)!
         }
-        
         set {
             display.text = String(newValue)
         }
