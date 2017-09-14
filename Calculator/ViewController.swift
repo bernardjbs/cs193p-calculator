@@ -8,29 +8,52 @@
 
 import UIKit
 
-//
-// TODO:
-// * Fix dot button
-// * Restrict number of digits to ensure they all fit in the label
-//
 class ViewController: UIViewController {
-
+    
     // INSTANCE VARIABLE
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var dotButton: UIButton!
     
     var userIsInTheMiddleOfTyping = false
     
+    override func viewDidLoad() {
+        
+    }
+        
+    
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
-        
         if userIsInTheMiddleOfTyping {
-            let textCurrentlyInDisplay = display.text!
-            display.text = textCurrentlyInDisplay + digit
+            
+            if (display.text?.characters.count)! < 20 {
+                let textCurrentlyInDisplay = display.text!
+                display.text = textCurrentlyInDisplay + digit
+            }
+            
+            if digit == "Del" {
+                display.text = brain.deleteChar(display.text!)
+                //print(display.text!)
+
+                if display.text == "" {
+                    display.text = "0"
+                    userIsInTheMiddleOfTyping = false
+                }
+            }
+            
         } else {
-            display.text = digit
+            if digit == "." {
+                display.text = "0."
+            } else if digit == "Del" {
+                display.text = "0"
+            }
+            else {
+                display.text = digit
+            }
             userIsInTheMiddleOfTyping = true
         }
-    }
+
+        dotButton.isEnabled = brain.decimalButtonStatus(display.text!)
+}
 
     // COMPUTED PROPERTY
     // SIDE NOTE: TO MALKE READ ONLY VAR, USE COMPUTED PROPERTY (BY THE GET METHOD)
@@ -52,11 +75,15 @@ class ViewController: UIViewController {
         }
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
+            dotButton.isEnabled = brain.decimalButtonStatus(mathematicalSymbol)
         }
         if let result = brain.result {
-            displayValue = result
+            if result == 0 {
+                display.text = "0"
+            } else {
+                displayValue = result
+            }
         }
     }
-
 }
 

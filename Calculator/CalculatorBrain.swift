@@ -17,6 +17,7 @@ struct CalculatorBrain {
         case unaryOperation((Double) -> Double)
         case binaryOperation((Double, Double) -> Double)
         case equals
+        case clear
     }
     
     private var operations: Dictionary <String, Operation> = [
@@ -29,7 +30,8 @@ struct CalculatorBrain {
         "-" : Operation.binaryOperation({ $0 - $1 }),
         "×" : Operation.binaryOperation({ $0 * $1 }),
         "÷" : Operation.binaryOperation({ $0 / $1 }),
-        "=" : Operation.equals
+        "=" : Operation.equals,
+        "C" : Operation.clear,
     ]
     
     mutating func performOperation(_ symbol: String) {
@@ -48,7 +50,25 @@ struct CalculatorBrain {
                 }
             case .equals:
                 performPendingBinaryOperation()
+            case .clear:
+                accumulator = 0
             }
+        }
+    }
+    
+    mutating func deleteChar(_ sender: String) -> String {
+        var truncatedString: String
+        let endIndex = sender.index(sender.endIndex, offsetBy: -4)
+        truncatedString = sender.substring(to: endIndex)
+        return truncatedString
+    }
+    
+    mutating func decimalButtonStatus(_ value: String) -> Bool {
+        if value.characters.contains(".") {
+            return false
+        }
+        else {
+            return true
         }
     }
     
@@ -68,7 +88,6 @@ struct CalculatorBrain {
         func perform(with secondOperand: Double) -> Double {
             return function(firstOperand, secondOperand)
         }
-        
     }
     
     mutating func setOperand (_ operand: Double){
@@ -80,5 +99,4 @@ struct CalculatorBrain {
             return accumulator
         }
     }
-    
 }
