@@ -11,6 +11,8 @@ import Foundation
 struct CalculatorBrain {
     
     private var accumulator: Double?
+//    private let resultIsPending = false
+//    private let description: String?
     
     private enum Operation {
         case constant(Double)
@@ -56,13 +58,6 @@ struct CalculatorBrain {
         }
     }
     
-    mutating func deleteChar(_ sender: String) -> String {
-        var truncatedString: String
-        let endIndex = sender.index(sender.endIndex, offsetBy: -4)
-        truncatedString = sender.substring(to: endIndex)
-        return truncatedString
-    }
-    
     mutating func decimalButtonStatus(_ value: String) -> Bool {
         if value.characters.contains(".") {
             return false
@@ -99,4 +94,7 @@ struct CalculatorBrain {
             return accumulator
         }
     }
+    
+    
+    
 }

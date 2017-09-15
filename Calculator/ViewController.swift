@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     // INSTANCE VARIABLE
+    @IBOutlet weak var descrition: UILabel!
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var dotButton: UIButton!
     
@@ -20,40 +21,36 @@ class ViewController: UIViewController {
         
     }
         
+    @IBAction func Del(_ sender: UIButton) {
+        if (display.text?.characters.count)! <= 1 {
+            display.text = "0"
+            userIsInTheMiddleOfTyping = false
+            return
+        }
+        display.text = String(display.text!.characters.dropLast())
+    }
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTyping {
-            
             if (display.text?.characters.count)! < 20 {
                 let textCurrentlyInDisplay = display.text!
                 display.text = textCurrentlyInDisplay + digit
             }
-            
-            if digit == "Del" {
-                display.text = brain.deleteChar(display.text!)
-                //print(display.text!)
-
-                if display.text == "" {
-                    display.text = "0"
-                    userIsInTheMiddleOfTyping = false
-                }
-            }
-            
-        } else {
+        }
+        else {
             if digit == "." {
                 display.text = "0."
-            } else if digit == "Del" {
-                display.text = "0"
             }
-            else {
+            else if digit == "0" {
+                return
+            } else {
                 display.text = digit
             }
             userIsInTheMiddleOfTyping = true
         }
-
         dotButton.isEnabled = brain.decimalButtonStatus(display.text!)
-}
+    }
 
     // COMPUTED PROPERTY
     // SIDE NOTE: TO MALKE READ ONLY VAR, USE COMPUTED PROPERTY (BY THE GET METHOD)
